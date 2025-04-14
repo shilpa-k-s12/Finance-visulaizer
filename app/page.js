@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 import TransactionForm from '@/components/TransactionForm';
 import TransactionList from '@/components/TransactionList';
@@ -10,8 +12,12 @@ export default function Home() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch('/api/transactions').then((res) => res.json()).then(setTransactions);
-    fetch('/api/categories').then((res) => res.json()).then(setCategories);
+    fetch('/api/transactions')
+      .then((res) => res.json())
+      .then(setTransactions);
+    fetch('/api/categories')
+      .then((res) => res.json())
+      .then(setCategories);
   }, []);
 
   const addTransaction = async (txn) => {
